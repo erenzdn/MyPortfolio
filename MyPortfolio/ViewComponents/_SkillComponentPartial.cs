@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using MyPortfolio.DAL.Context;
 
 namespace MyPortfolio.ViewComponents
@@ -8,8 +9,8 @@ namespace MyPortfolio.ViewComponents
         MyPortfolioContext context = new MyPortfolioContext();
         public IViewComponentResult Invoke()
         {
-
-            return View();
+            var values=context.Skills.ToList();
+            return View(values);
         }
     }
 }
